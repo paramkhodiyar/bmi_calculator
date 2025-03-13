@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     let modes = document.querySelectorAll(".mode");
     let body = document.querySelector("body");
     const form = document.querySelector("form");
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const dropdowns = document.querySelectorAll('.dropdown');
     dropdowns.forEach(dropdown => {
         const dropdownContent = dropdown.querySelector('.dropdown-content');
-        dropdown.addEventListener('click', function(e) {
+        dropdown.addEventListener('click', function (e) {
             if (window.innerWidth <= 768) {
                 if (dropdownContent.style.display === 'flex') {
                     dropdownContent.style.display = 'none';
@@ -47,14 +47,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const bmi = (weight / ((height * height) / 10000)).toFixed(2);
         bmiValueSpan.textContent = bmi;
         resultDiv.classList.add('visible');
-        let bmiPosition;
-        if (bmi < 18.5) bmiPosition = "5%";
-        else if (bmi >= 18.5 && bmi < 25) bmiPosition = "30%";
-        else if (bmi >= 25 && bmi < 30) bmiPosition = "65%";
-        else bmiPosition = "90%";
-        bmiIndicator.style.left = bmiPosition;
+        let minBMI = 15;
+        let maxBMI = 40;
+        let minPosition = 5;
+        let maxPosition = 90;
+        let normalizedBMI = Math.max(minBMI, Math.min(bmi, maxBMI));
+        let bmiPosition = minPosition + ((normalizedBMI - minBMI) / (maxBMI - minBMI)) * (maxPosition - minPosition);
+
+        bmiIndicator.style.left = `${bmiPosition}%`;
     });
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
         dropdowns.forEach(dropdown => {
             if (!dropdown.contains(e.target)) {
                 const dropdownContent = dropdown.querySelector('.dropdown-content');
