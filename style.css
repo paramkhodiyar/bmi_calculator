@@ -130,10 +130,8 @@ body.dark-theme .dropdown-content a:hover {
     align-items: center;
 }
 
-/* Dark theme specific styling */
 body.dark-theme .form-style {
     background-color: rgb(192, 138, 13);
-    /* Darker yellow for dark mode */
 }
 
 .input {
@@ -293,7 +291,6 @@ body.dark-theme .bmi-range {
     padding: 40px;
     flex-wrap: wrap;
     min-height: calc(100vh - 70px);
-    /* Account for header height */
     transition: background-color 0.3s ease;
 }
 
@@ -335,8 +332,6 @@ body.dark-theme .bmi-analysis {
     transform: scale(1.02);
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
 }
-
-/* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .main-wrapper {
         flex-direction: column;

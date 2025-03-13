@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let modes = document.querySelectorAll(".mode");
     let body = document.querySelector("body");
     const form = document.querySelector("form");
+    let header = document.querySelector("#header")
     body.classList.add('light-theme');
     modes.forEach((mode) => {
         mode.addEventListener("click", () => {
