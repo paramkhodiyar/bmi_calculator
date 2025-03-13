@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const resultDiv = document.querySelector(".result");
         const bmiValueSpan = document.querySelector("#bmi-value");
         const bmiIndicator = document.querySelector("#bmi-indicator");
+    
         if (isNaN(weight) || weight <= 0) {
             bmiValueSpan.textContent = "Invalid Weight";
             return;
@@ -49,11 +50,17 @@ document.addEventListener('DOMContentLoaded', function () {
         resultDiv.classList.add('visible');
         let minBMI = 15;
         let maxBMI = 40;
-        let minPosition = 5;
-        let maxPosition = 90;
-        let normalizedBMI = Math.max(minBMI, Math.min(bmi, maxBMI));
-        let bmiPosition = minPosition + ((normalizedBMI - minBMI) / (maxBMI - minBMI)) * (maxPosition - minPosition);
-
+        let bmiPosition;
+    
+        if (bmi < 18.5) {
+            bmiPosition = 5 + ((bmi - 15) / (18.5 - 15)) * 20;
+        } else if (bmi < 25) {
+            bmiPosition = 25 + ((bmi - 18.5) / (25 - 18.5)) * 25;
+        } else if (bmi < 30) {
+            bmiPosition = 50 + ((bmi - 25) / (30 - 25)) * 25;
+        } else {
+            bmiPosition = 75 + ((bmi - 30) / (40 - 30)) * 15;
+        }
         bmiIndicator.style.left = `${bmiPosition}%`;
     });
     document.addEventListener('click', function (e) {
