@@ -45,24 +45,26 @@ document.addEventListener('DOMContentLoaded', function () {
             bmiValueSpan.textContent = "Invalid Height";
             return;
         }
+        
         const bmi = (weight / ((height * height) / 10000)).toFixed(2);
         bmiValueSpan.textContent = bmi;
-        resultDiv.classList.add('visible');
-        let minBMI = 15;
-        let maxBMI = 40;
-        let bmiPosition;
+        resultDiv.classList.add("visible");
     
-        if (bmi < 18.5) {
-            bmiPosition = 5 + ((bmi - 15) / (18.5 - 15)) * 20;
-        } else if (bmi < 25) {
-            bmiPosition = 25 + ((bmi - 18.5) / (25 - 18.5)) * 25;
-        } else if (bmi < 30) {
-            bmiPosition = 50 + ((bmi - 25) / (30 - 25)) * 25;
+        let bmiPosition;
+        
+        if (bmi <= 18.5) {
+            bmiPosition = ((bmi - 15) / (18.5 - 15)) * 20; 
+        } else if (bmi <= 25) {
+            bmiPosition = 20 + ((bmi - 18.5) / (25 - 18.5)) * 30; 
+        } else if (bmi <= 30) {
+            bmiPosition = 50 + ((bmi - 25) / (30 - 25)) * 25; 
         } else {
-            bmiPosition = 75 + ((bmi - 30) / (40 - 30)) * 15;
+            bmiPosition = 75 + ((bmi - 30) / (40 - 30)) * 25; 
         }
-        bmiIndicator.style.left = `${bmiPosition}%`;
+    
+        bmiIndicator.style.left = `${Math.min(Math.max(bmiPosition, 0), 100)}%`;
     });
+    
     document.addEventListener('click', function (e) {
         dropdowns.forEach(dropdown => {
             if (!dropdown.contains(e.target)) {
