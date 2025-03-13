@@ -1,0 +1,369 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    transition: background-color 0.3s ease;
+}
+body.light-theme {
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+body.dark-theme {
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    background-color:rgb(238, 171, 16);
+    width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+#header nav {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+}
+body.light-theme #header {
+    background-color: rgb(238, 171, 16);
+}
+body.dark-theme #header {
+    background-color: rgb(192, 138, 13);
+}
+
+#header h2 {
+    padding: 20px;
+    color: rgb(0, 0, 0);
+    margin: 0;
+}
+
+#header nav a {
+    float: left;
+    display: block;
+    color: #000000;
+    text-align: center;
+    font-size: large;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+#header nav .upper {
+    color: rgb(0, 0, 0);
+    padding: 10px;
+}
+
+#header nav .upper:hover {
+    color: rgb(253, 253, 253);
+    text-decoration: underline;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    top: 100%;
+    display: none;
+    position: absolute;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 20;
+    right: 0;
+}
+
+body.dark-theme .dropdown-content {
+    background-color: #333;
+}
+
+.dropdown-content a {
+    color: rgb(0, 0, 0);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    float: none;
+    text-align: left;
+    clear: both;
+    margin: 0 !important;
+}
+
+body.dark-theme .dropdown-content a {
+    color: #f0f0f0;
+}
+
+.dropdown-content a:hover {
+    background-color: #bebebe;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+body.dark-theme .dropdown-content a:hover {
+    background-color: #444;
+}
+@media (min-width: 769px) {
+    .dropdown:hover .dropdown-content {
+        display: flex;
+        flex-direction: column;
+    }
+}
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+.form-style {
+    background-color: rgb(238, 171, 16);
+    padding: 25px;
+    border-radius: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Dark theme specific styling */
+body.dark-theme .form-style {
+    background-color: rgb(192, 138, 13);
+    /* Darker yellow for dark mode */
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.input label {
+    font-size: 2em;
+    margin: 5px;
+}
+
+.input input {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.submit input {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: #000000;
+    color: white;
+    cursor: pointer;
+    margin: 20px;
+}
+
+.submit input:hover {
+    background-color: #474747;
+}
+
+.result {
+    display: none;
+}
+
+.result.visible {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.result label {
+    font-size: 25px;
+    margin: 5px;
+}
+
+.result input {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+.bmi-analysis {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    background: #f8f8f8;
+    border-radius: 10px;
+    margin: auto;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .bmi-analysis {
+    background: #3a3a3a;
+    color: #e0e0e0;
+}
+
+.bmi-display {
+    font-size: 24px;
+    font-weight: bold;
+    color: #a52a2a;
+}
+
+body.dark-theme .bmi-display {
+    color: #ff7070;
+}
+
+.bmi-bar {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.bmi-section {
+    flex: 1;
+    height: 100%;
+}
+
+.underweight {
+    background: #f4c842;
+}
+.normal {
+    background: #4caf50;
+}
+.overweight {
+    background: #f4a442;
+}
+.obesity {
+    background: #d9534f;
+}
+.bmi-indicator {
+    position: absolute;
+    width: 4px;
+    height: 20px;
+    background: black;
+    top: -5px;
+    transition: left 0.3s ease-in-out;
+}
+
+body.dark-theme .bmi-indicator {
+    background: white;
+}
+
+.bmi-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-style: italic;
+    margin-top: 5px;
+    color: #555;
+}
+
+body.dark-theme .bmi-labels {
+    color: #bbb;
+}
+
+.bmi-range {
+    font-size: 14px;
+    color: #000000;
+    font-style: italic;
+}
+
+body.dark-theme .bmi-range {
+    color: #e0e0e0;
+}
+
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 40px;
+    flex-wrap: wrap;
+    min-height: calc(100vh - 70px);
+    /* Account for header height */
+    transition: background-color 0.3s ease;
+}
+
+body.light-theme .main-wrapper {
+    background: linear-gradient(to bottom right, #f7f7f7, #e6e6e6);
+}
+
+body.dark-theme .main-wrapper {
+    background: linear-gradient(to bottom right, #2a2a2a, #1a1a1a);
+}
+
+.form-container {
+    width: 40%;
+    height: auto;
+}
+
+.form-style {
+    width: 100%;
+    height: auto;
+}
+
+.bmi-analysis {
+    width: 40%;
+}
+
+.form-style,
+.bmi-analysis {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+body.dark-theme .form-style,
+body.dark-theme .bmi-analysis {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.form-style:hover,
+.bmi-analysis:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .main-wrapper {
+        flex-direction: column;
+    }
+
+    .form-container,
+    .bmi-analysis {
+        width: 90%;
+    }
+
+    .input label {
+        font-size: 1.5em;
+    }
+
+    #header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #header nav {
+        padding: 10px 20px 20px 20px;
+    }
+
+    .dropdown-content {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 100%;
+    }
+}
